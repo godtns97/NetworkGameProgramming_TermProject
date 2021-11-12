@@ -1,1 +1,1 @@
-# NetworkGameProgramming_TermProject
+# 넷겜플 TermProject
