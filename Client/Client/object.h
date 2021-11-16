@@ -6,16 +6,14 @@
 class Object
 {
 protected:
-	objectType	type;
 	int			posX, posY;
 	int			width, height;
 	int			vel, dir;
 
 public:
-	Object(objectType t, int x, int y, int w, int h, int v, int d):
-		type(t), posX(x), posY(y), width(w), height(h), vel(v), dir(d) {}
+	Object(int x, int y, int w, int h, int v, int d):
+		posX(x), posY(y), width(w), height(h), vel(v), dir(d) {}
 	void move(int opt);
-	objectType getType();
 	int getPosX();
 	int getPosY();
 	int getWidth();

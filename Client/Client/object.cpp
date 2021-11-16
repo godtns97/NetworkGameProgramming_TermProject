@@ -6,11 +6,6 @@ void Object::move(int opt)
 	posY += opt * dy[dir - 1] * vel;
 }
 
-objectType Object::getType()
-{
-	return type;
-}
-
 int Object::getPosX()
 {
 	return posX;

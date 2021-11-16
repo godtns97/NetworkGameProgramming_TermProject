@@ -1,49 +1,18 @@
 #include "global.h"
-#include "client.h"
+#include "bullet.h"
+#include "object.h"
+#include "surface.h"
+#include "tank.h"
 using namespace std;
 
-SDL_Window* gWindow = NULL;
-SDL_Surface* gScreenSurface = NULL;			//The surface contained by the window
+Surface& surface;
 
-bool init()
-{
-	bool success = true;
-
-	//Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-		success = false;
-	}
-
-	//Create window
-	gWindow = SDL_CreateWindow("TANK", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	if (gWindow == NULL)
-	{
-		printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
-		success = false;
-	}
-	else
-	{
-		//Get window surface
-		gScreenSurface = SDL_GetWindowSurface(gWindow);
-	}
-
-	return success;
-}
-
-void close()
-{
-	SDL_DestroyWindow(gWindow);
-	gWindow = NULL;
-
-	SDL_Quit();
-}
+int cmd;
 
 int main(int argc, char* args[])
 {
 	//Start up SDL and create window
-	if (!init()) cout << "Failed to load media!\n";
+	if (!surface.init()) return -1;
 	else
 	{
 		bool quit = false;			//Main loop flag
@@ -65,30 +34,29 @@ int main(int argc, char* args[])
 					switch (e.key.keysym.sym)
 					{
 					case SDLK_UP:
+						cmd = 1;
 						break;
 
 					case SDLK_DOWN:
+						cmd = 2;
 						break;
 
 					case SDLK_RIGHT:
+						cmd = 3;
 						break;
 
 					case SDLK_LEFT:
+						cmd = 4;
 						break;
 					case SDLK_SPACE:
+						cmd = 0;
 						break;
 					}
 				}
 			}
-
-			////Apply the image
-			//SDL_BlitSurface(gXOut, NULL, gScreenSurface, NULL);
-			
-			////Update the surface
-			//SDL_UpdateWindowSurface(gWindow);
 		}
 	}
 
-	close();
+	surface.close();
 	return 0;
 }

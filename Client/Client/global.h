@@ -11,9 +11,10 @@
 
 const int SCREEN_WIDTH = 900;
 const int SCREEN_HEIGHT = 600;
+const int SCREEN_BPP = 32;			// bits-per-pixel
+const int SCREEN_FPS = 30;
 
 // object
-enum objectType { BULLET = 2, TANK = 4 };
 const int dx[] = { 0, 0, -1, 1 };
 const int dy[] = { -1, 1, 0, 0 };
 
