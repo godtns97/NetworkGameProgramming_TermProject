@@ -12,13 +12,13 @@ private:
 	int		reload;
 
 public:
-	Tank(int id, int x, int y);
+	Tank(int id, int n, int x, int y);
 	void run(int cmd);
 	int getID();
 	int getHP();
 	Bullet shoot()
 	{
-		Bullet b(posX + 10, posY + 10, dir);
+		Bullet b(0, posX + 10, posY + 10, dir);
 		b.move(+1);
 		return b;
 	}

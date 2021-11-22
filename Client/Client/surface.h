@@ -12,6 +12,8 @@ using std::list;
 class Surface
 {
 private:
+	Surface() = default;
+	~Surface() = default;
 	SDL_Surface* loadImage(const char fimeName[]);
 	SDL_Surface* screen;
 	SDL_Surface* background;
@@ -19,6 +21,13 @@ private:
 	SDL_Surface* tank[5][5];
 
 public:
+	Surface(Surface&) = delete;
+	Surface(Surface&&) = delete;
+	static Surface& getInstance()
+	{
+		static Surface instance;
+		return instance;
+	}
 	bool init();
 	void close();
 	void draw(const list<Tank>& tanks, const list<Bullet>& bullets);

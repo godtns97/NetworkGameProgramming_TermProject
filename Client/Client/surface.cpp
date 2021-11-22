@@ -90,8 +90,8 @@ void Surface::draw(const list<Tank>& tanks, const list<Bullet>& bullets)
 {
 	SDL_FillRect(screen, 0, 0U);
 
-	for (auto& b : bullets) applySurface(bullet[], screen, b.getPosX(), b.getPosY());
-	for (auto& t : tanks) applySurface(tank[], screen, t.getPosX(), t.getPosY());
+	for (auto& b : bullets) applySurface(bullet[b.getNum()], screen, b.getPosX(), b.getPosY());
+	for (auto& t : tanks) applySurface(tank[t.getNum()][t.getDir()], screen, t.getPosX(), t.getPosY());
 
 	SDL_UpdateWindowSurface(gWindow);
 }

@@ -5,7 +5,9 @@
 #include "tank.h"
 using namespace std;
 
-Surface& surface;
+Surface& surface = Surface::getInstance();
+list<Tank> tanks;
+list<Bullet> bullets;
 
 int cmd;
 

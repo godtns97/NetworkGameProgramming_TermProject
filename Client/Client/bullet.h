@@ -6,8 +6,8 @@
 class Bullet : public Object
 {
 public:
-	Bullet(int x, int y, int d):
-		Object(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_VELOCITY, dir) {}
+	Bullet(int n, int x, int y, int d):
+		Object(n, x, y, BULLET_SIZE, BULLET_SIZE, BULLET_VELOCITY, dir) {}
 };
 
 #endif
