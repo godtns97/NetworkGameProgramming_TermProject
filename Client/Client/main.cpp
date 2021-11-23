@@ -3,9 +3,12 @@
 #include "object.h"
 #include "surface.h"
 #include "tank.h"
+#include "timer.h"
 using namespace std;
 
 Surface& surface;
+list<Tank> tanks;
+list<Bullet> bullets;
 
 int cmd;
 

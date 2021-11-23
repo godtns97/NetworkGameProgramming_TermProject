@@ -17,7 +17,7 @@ SDL_Surface* Surface::loadImage(const char fileName[])
 	loadedimage = SDL_LoadBMP(fileName);
 	if (loadedimage)
 	{
-		optimizedImage = SDL_ConvertSurface(loadedimage, screen->format, 0);;
+		optimizedImage = SDL_ConvertSurface(loadedimage, screen->format, 0);
 		SDL_FreeSurface(loadedimage);
 	}
 
