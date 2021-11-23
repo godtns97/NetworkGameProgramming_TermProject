@@ -13,7 +13,7 @@ private:
 
 public:
 	Tank(int id, int n, int x, int y);
-	void run(int cmd);
+	void run(int keypress);
 	int getID();
 	int getHP();
 	Bullet shoot()

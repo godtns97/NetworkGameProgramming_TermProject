@@ -3,11 +3,11 @@
 Tank::Tank(int id, int n, int x, int y):
 	Object(n, x * 20, y * 20, TANK_SIZE, TANK_SIZE, TANK_VELOCITY, dir), ID(id), HP(3), reload(2) {}
 
-void Tank::run(int cmd)
+void Tank::run(int keypress)
 {
-	if (cmd > 0)
+	if (keypress > 0)
 	{
-		dir = cmd;
+		dir = keypress;
 	}
 }
 

@@ -6,15 +6,11 @@
 #include "timer.h"
 using namespace std;
 
-<<<<<<< HEAD
 Surface& surface = Surface::getInstance();
-=======
-Surface& surface;
->>>>>>> server
 list<Tank> tanks;
 list<Bullet> bullets;
 
-int cmd;
+int keypress;
 
 int main(int argc, char* args[])
 {
@@ -41,22 +37,22 @@ int main(int argc, char* args[])
 					switch (e.key.keysym.sym)
 					{
 					case SDLK_UP:
-						cmd = 1;
+						keypress = 1;
 						break;
 
 					case SDLK_DOWN:
-						cmd = 2;
+						keypress = 2;
 						break;
 
 					case SDLK_RIGHT:
-						cmd = 3;
+						keypress = 3;
 						break;
 
 					case SDLK_LEFT:
-						cmd = 4;
+						keypress = 4;
 						break;
 					case SDLK_SPACE:
-						cmd = 0;
+						keypress = 0;
 						break;
 					}
 				}
