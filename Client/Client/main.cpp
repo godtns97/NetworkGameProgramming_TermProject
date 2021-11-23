@@ -3,9 +3,14 @@
 #include "object.h"
 #include "surface.h"
 #include "tank.h"
+#include "timer.h"
 using namespace std;
 
+<<<<<<< HEAD
 Surface& surface = Surface::getInstance();
+=======
+Surface& surface;
+>>>>>>> server
 list<Tank> tanks;
 list<Bullet> bullets;
 
