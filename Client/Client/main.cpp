@@ -1,65 +1,58 @@
-#include "global.h"
-#include "bullet.h"
-#include "object.h"
-#include "surface.h"
-#include "tank.h"
-#include "timer.h"
-using namespace std;
+/*This source code copyrighted by Lazy Foo' Productions (2004-2020)
+and may not be redistributed without written permission.*/
 
-Surface& surface = Surface::getInstance();
-list<Tank> tanks;
-list<Bullet> bullets;
+//Using SDL and standard IO
+#pragma comment(lib, "SDL2.lib")
+#pragma comment(lib, "SDL2main.lib")
+#include <SDL.h>
+#include <stdio.h>
 
-int keypress;
+//Screen dimension constants
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 
 int main(int argc, char* args[])
 {
-	//Start up SDL and create window
-	if (!surface.init()) return -1;
+	//The window we'll be rendering to
+	SDL_Window* window = NULL;
+
+	//The surface contained by the window
+	SDL_Surface* screenSurface = NULL;
+
+	//Initialize SDL
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+	}
 	else
 	{
-		bool quit = false;			//Main loop flag
-		SDL_Event e;
-
-		//While application is running
-		while (!quit)
+		//Create window
+		window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		if (window == NULL)
 		{
-			//Handle events on queue
-			while (SDL_PollEvent(&e) != 0)
-			{
-				//User requests quit
-				if (e.type == SDL_QUIT)
-				{
-					quit = true;
-				}
-				else if (e.type == SDL_KEYDOWN)
-				{
-					switch (e.key.keysym.sym)
-					{
-					case SDLK_UP:
-						keypress = 1;
-						break;
+			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+		}
+		else
+		{
+			//Get window surface
+			screenSurface = SDL_GetWindowSurface(window);
 
-					case SDLK_DOWN:
-						keypress = 2;
-						break;
+			//Fill the surface white
+			SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
 
-					case SDLK_RIGHT:
-						keypress = 3;
-						break;
+			//Update the surface
+			SDL_UpdateWindowSurface(window);
 
-					case SDLK_LEFT:
-						keypress = 4;
-						break;
-					case SDLK_SPACE:
-						keypress = 0;
-						break;
-					}
-				}
-			}
+			//Wait two seconds
+			SDL_Delay(2000);
 		}
 	}
 
-	surface.close();
+	//Destroy window
+	SDL_DestroyWindow(window);
+
+	//Quit SDL subsystems
+	SDL_Quit();
+
 	return 0;
 }
