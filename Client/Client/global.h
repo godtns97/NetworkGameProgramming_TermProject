@@ -9,23 +9,13 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <list>
 using namespace std;
 
 const int SCREEN_WIDTH = 900;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;			// bits-per-pixel
 const int SCREEN_FPS = 30;
-
-//Key press surfaces constants
-enum KeyPressSurfaces
-{
-	KEY_PRESS_SURFACE_DEFAULT,
-	KEY_PRESS_SURFACE_UP,
-	KEY_PRESS_SURFACE_DOWN,
-	KEY_PRESS_SURFACE_LEFT,
-	KEY_PRESS_SURFACE_RIGHT,
-	KEY_PRESS_SURFACE_TOTAL
-};
 
 SDL_Window* gWindow = NULL;						//The window we'll be rendering to
 SDL_Surface* gScreenSurface = NULL;				//The surface contained by the window

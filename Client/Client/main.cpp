@@ -1,5 +1,8 @@
 #include "global.h"
 #include "surface.h"
+#include "tank.h"
+
+list<Tank> tanks;
 
 //Starts up SDL and creates window
 bool init()
@@ -31,63 +34,10 @@ bool init()
 
 	return success;
 }
-//Loads media
-bool loadMedia()
-{
-	bool success = true;
 
-	//Load default surface
-	gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadSurface("image/tank/0-4.bmp");
-	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] == NULL)
-	{
-		cout << "Failed to load default image!\n";
-		success = false;
-	}
-
-	//Load up surface
-	gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface("image/tank/0-1.bmp");
-	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] == NULL)
-	{
-		cout << "Failed to load up image!\n";
-		success = false;
-	}
-
-	//Load down surface
-	gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadSurface("image/tank/0-2.bmp");
-	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] == NULL)
-	{
-		cout << "Failed to load down image!\n";
-		success = false;
-	}
-
-	//Load left surface
-	gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadSurface("image/tank/0-3.bmp");
-	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] == NULL)
-	{
-		cout << "Failed to load left image!\n";
-		success = false;
-	}
-
-	//Load right surface
-	gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] = loadSurface("image/tank/0-4.bmp");
-	if (gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] == NULL)
-	{
-		cout << "Failed to load right image!\n";
-		success = false;
-	}
-
-	return success;
-}
 //Frees media and shuts down SDL
 void close()
 {
-	//Deallocate surfaces
-	for (int i = 0; i < KEY_PRESS_SURFACE_TOTAL; ++i)
-	{
-		SDL_FreeSurface(gKeyPressSurfaces[i]);
-		gKeyPressSurfaces[i] = NULL;
-	}
-
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 

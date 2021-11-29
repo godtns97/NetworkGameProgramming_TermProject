@@ -6,19 +6,22 @@
 class Object
 {
 protected:
-	int		ID;
+	int		img;
 	int		posX, posY;
 	int		width, height;
+	int		dir;
 
 public:
-	Object(int id, int x, int y, int w, int h):
-		ID(id), posX(x), posY(y), width(w), height(h) {}
+	Object(int i, int x, int y, int w, int h, int d):
+		img(i), posX(x), posY(y), width(w), height(h), dir(d) {}
 	~Object() {}
 	void move();
-	int getPosX();
-	int getPosY();
-	int getWidth();
-	int getHeight();
+	int getImg() const;
+	int getPosX() const;
+	int getPosY() const;
+	int getWidth() const;
+	int getHeight() const;
+	int getDir() const;
 };
 
 #endif

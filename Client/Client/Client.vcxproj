@@ -144,11 +144,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="surface.cpp" />
+    <ClCompile Include="tank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="surface.h" />
+    <ClInclude Include="tank.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
