@@ -5,26 +5,33 @@
 #pragma comment(lib, "SDL2main.lib")
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <iostream>
-#include <cstdlib>
 #include <string>
+#include <cmath>
+using namespace std;
 
 const int SCREEN_WIDTH = 900;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;			// bits-per-pixel
 const int SCREEN_FPS = 30;
 
-// object
-const int dx[] = { 0, 0, -1, 1 };
-const int dy[] = { -1, 1, 0, 0 };
+//Key press surfaces constants
+enum KeyPressSurfaces
+{
+	KEY_PRESS_SURFACE_DEFAULT,
+	KEY_PRESS_SURFACE_UP,
+	KEY_PRESS_SURFACE_DOWN,
+	KEY_PRESS_SURFACE_LEFT,
+	KEY_PRESS_SURFACE_RIGHT,
+	KEY_PRESS_SURFACE_TOTAL
+};
 
-// tank
+SDL_Window* gWindow = NULL;						//The window we'll be rendering to
+SDL_Surface* gScreenSurface = NULL;				//The surface contained by the window
+
 const int TANK_SIZE = 40;
-const int TANK_VELOCITY = 1;
-const int reloadTime = 2;
-const int respawnTime = 4;
 
 const int BULLET_SIZE = 4;
-const int BULLET_VELOCITY = 2;
 
 #endif

@@ -1,37 +1,23 @@
 #include "object.h"
 
-void Object::move(int opt)
+void Object::move()
 {
-	posX += opt * dx[dir - 1] * vel;
-	posY += opt * dy[dir - 1] * vel;
+	posX += 10;
+	posY += 10;
 }
-
-int Object::getNum() const
-{
-	return num;
-}
-
-int Object::getPosX() const
+int Object::getPosX()
 {
 	return posX;
 }
-
-int Object::getPosY() const
+int Object::getPosY()
 {
 	return posY;
 }
-
-int Object::getWidth() const
+int Object::getWidth()
 {
 	return width;
 }
-
-int Object::getHeight() const
+int Object::getHeight()
 {
 	return height;
-}
-
-int Object::getDir() const
-{
-	return dir;
 }

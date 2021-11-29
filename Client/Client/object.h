@@ -6,21 +6,19 @@
 class Object
 {
 protected:
-	int			num;
-	int			posX, posY;
-	int			width, height;
-	int			vel, dir;
+	int		ID;
+	int		posX, posY;
+	int		width, height;
 
 public:
-	Object(int n, int x, int y, int w, int h, int v, int d):
-		num(n), posX(x), posY(y), width(w), height(h), vel(v), dir(d) {}
-	void move(int opt);
-	int getNum() const;
-	int getPosX() const;
-	int getPosY() const;
-	int getWidth() const;
-	int getHeight() const;
-	int getDir() const;
+	Object(int id, int x, int y, int w, int h):
+		ID(id), posX(x), posY(y), width(w), height(h) {}
+	~Object() {}
+	void move();
+	int getPosX();
+	int getPosY();
+	int getWidth();
+	int getHeight();
 };
 
 #endif

@@ -1,1 +1,12 @@
-﻿
+﻿  main.cpp
+  object.cpp
+  surface.cpp
+object.obj : error LNK2005: "struct SDL_Surface * gCurrentSurface" (?gCurrentSurface@@3PEAUSDL_Surface@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+object.obj : error LNK2005: "struct SDL_Surface * * gKeyPressSurfaces" (?gKeyPressSurfaces@@3PAPEAUSDL_Surface@@A)이(가) main.obj에 이미 정의되어 있습니다.
+object.obj : error LNK2005: "struct SDL_Window * gWindow" (?gWindow@@3PEAUSDL_Window@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+object.obj : error LNK2005: "struct SDL_Surface * gScreenSurface" (?gScreenSurface@@3PEAUSDL_Surface@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+surface.obj : error LNK2005: "struct SDL_Surface * gCurrentSurface" (?gCurrentSurface@@3PEAUSDL_Surface@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+surface.obj : error LNK2005: "struct SDL_Surface * * gKeyPressSurfaces" (?gKeyPressSurfaces@@3PAPEAUSDL_Surface@@A)이(가) main.obj에 이미 정의되어 있습니다.
+surface.obj : error LNK2005: "struct SDL_Window * gWindow" (?gWindow@@3PEAUSDL_Window@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+surface.obj : error LNK2005: "struct SDL_Surface * gScreenSurface" (?gScreenSurface@@3PEAUSDL_Surface@@EA)이(가) main.obj에 이미 정의되어 있습니다.
+C:\Users\SAMSUNG\Desktop\강의자료\네트워크게임프로그래밍\NetworkGameProgramming_TermProject\Client\x64\Release\Client.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
