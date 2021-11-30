@@ -15,7 +15,7 @@ public:
 	Object(int i, int x, int y, int w, int h, int d):
 		img(i), posX(x), posY(y), width(w), height(h), dir(d) {}
 	~Object() {}
-	void move();
+	void move();			// 수정 필요!!!
 	int getImg() const;
 	int getPosX() const;
 	int getPosY() const;

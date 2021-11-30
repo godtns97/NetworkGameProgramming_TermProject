@@ -49,57 +49,41 @@ int main(int argc, char* args[])
 	if (!init()) cout << "Failed to initalize!\n";
 	else
 	{
-		if (!loadMedia()) cout << "Failed to load media\n";
-		else
+
+		bool quit = false;
+		SDL_Event e;
+
+		while (!quit)
 		{
-			bool quit = false;
-			SDL_Event e;
-			gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
-
-			while (!quit)
+			while (SDL_PollEvent(&e) != 0)
 			{
-				while (SDL_PollEvent(&e) != 0)
+				if (e.type == SDL_QUIT)
 				{
-					if (e.type == SDL_QUIT)
+					quit = true;
+				}
+				else if (e.type == SDL_KEYDOWN)
+				{
+					switch (e.key.keysym.sym)
 					{
-						quit = true;
-					}
-					else if (e.type == SDL_KEYDOWN)
-					{
-						switch (e.key.keysym.sym)
-						{
-						case SDLK_UP:
-							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
-							break;
+					case SDLK_UP:
+						break;
 
-						case SDLK_DOWN:
-							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
-							break;
+					case SDLK_DOWN:
+						break;
 
-						case SDLK_LEFT:
-							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
-							break;
+					case SDLK_LEFT:
+						break;
 
-						case SDLK_RIGHT:
-							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
-							break;
+					case SDLK_RIGHT:
+						break;
 
-						default:
-							gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
-							break;
-						}
+					case SDLK_SPACE:
+						break;
+
+					default:
+						continue;
 					}
 				}
-
-				//Apply the image
-				SDL_Rect stretchRect;
-				stretchRect.x = 100;
-				stretchRect.y = 100;
-				stretchRect.w = TANK_SIZE;
-				stretchRect.h = TANK_SIZE;
-				SDL_BlitSurface(gCurrentSurface, NULL, gScreenSurface, &stretchRect);
-				//Update the surface
-				SDL_UpdateWindowSurface(gWindow);
 			}
 		}
 	}
