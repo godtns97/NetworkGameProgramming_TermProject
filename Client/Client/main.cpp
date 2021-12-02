@@ -4,6 +4,8 @@
 
 list<Tank> tanks;
 
+Surface* surface;
+
 //Starts up SDL and creates window
 bool init()
 {
