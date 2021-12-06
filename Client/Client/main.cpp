@@ -2,12 +2,14 @@
 #include "surface.h"
 #include "tank.h"
 #include "timer.h"
+#include "client.h"
 
 list<Tank> tanks;
+Client* client;
 
 Surface& surface = Surface::getInstance();
 
-int cmd;
+int myID, cmd;
 
 //Starts up SDL and creates window
 bool init()
@@ -61,11 +63,8 @@ void handleEvent(bool& quit)
 	{
 		while (SDL_PollEvent(&e) != 0)
 		{
-			if (e.type == SDL_QUIT)
-			{
-				quit = true;
-			}
-			//If a key was pressed
+			if (e.type == SDL_QUIT) quit = true;
+			// If a key was pressed
 			if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
 			{
 				switch (e.key.keysym.sym)
@@ -76,8 +75,9 @@ void handleEvent(bool& quit)
 				case SDLK_RIGHT: cmd = 4; break;
 				default: continue;
 				}
+				client->clientSend(myID, cmd);
 			}
-			//If a key was released
+			// If a key was released
 			else if (e.type == SDL_KEYUP && e.key.repeat == 0)
 			{
 				switch (e.key.keysym.sym)
@@ -88,6 +88,7 @@ void handleEvent(bool& quit)
 				case SDLK_RIGHT: cmd = -4; break;
 				default: continue;
 				}
+				client->clientSend(myID, cmd);
 			}
 		}
 	}
@@ -116,12 +117,14 @@ void draw(bool &quit)
 	}
 }
 
-int main(int argc, char* args[])
+int main(int argc, char* argv[])
 {
+	client = new Client(argv[1]);
+	client->clientConnect();
+
 	if (!init()) cout << "Failed to initalize!\n";
 	else
 	{
-
 		bool quit = false;
 		SDL_Event e;
 

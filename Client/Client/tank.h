@@ -11,7 +11,7 @@ private:
 
 public:
 	Tank(int id, int i, int x, int y) :
-		Object(i, x, y, TANK_SIZE, TANK_SIZE, 1, TANK_VEL), ID(id), HP(3) {}
+		Object(i, x, y, TANK_SIZE, TANK_SIZE, 1, TANK_VEL, TANK_VEL), ID(id), HP(3) {}
 	~Tank() {}
 	void tankMove();
 	int getID();

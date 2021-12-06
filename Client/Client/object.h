@@ -13,8 +13,8 @@ protected:
 	int		velX, velY;
 
 public:
-	Object(int i, int x, int y, int w, int h, int d, int v):
-		img(i), posX(x), posY(y), width(w), height(h), dir(d), velX(v), velY(v) {}
+	Object(int i, int x, int y, int w, int h, int d, int vx, int vy):
+		img(i), posX(x), posY(y), width(w), height(h), dir(d), velX(vx), velY(vy) {}
 	~Object() {}
 	int getImg() const;
 	int getPosX() const;
