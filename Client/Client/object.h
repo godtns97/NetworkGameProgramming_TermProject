@@ -10,12 +10,12 @@ protected:
 	int		posX, posY;
 	int		width, height;
 	int		dir;
+	int		velX, velY;
 
 public:
-	Object(int i, int x, int y, int w, int h, int d):
-		img(i), posX(x), posY(y), width(w), height(h), dir(d) {}
+	Object(int i, int x, int y, int w, int h, int d, int v):
+		img(i), posX(x), posY(y), width(w), height(h), dir(d), velX(v), velY(v) {}
 	~Object() {}
-	void move();			// 수정 필요!!!
 	int getImg() const;
 	int getPosX() const;
 	int getPosY() const;

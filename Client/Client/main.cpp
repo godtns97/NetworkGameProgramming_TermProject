@@ -7,6 +7,8 @@ list<Tank> tanks;
 
 Surface& surface = Surface::getInstance();
 
+int cmd;
+
 //Starts up SDL and creates window
 bool init()
 {
@@ -51,7 +53,47 @@ void close()
 	SDL_Quit();
 }
 
-void draw(const bool &quit)
+void handleEvent(bool& quit)
+{
+	SDL_Event e;
+
+	while (!quit)
+	{
+		while (SDL_PollEvent(&e) != 0)
+		{
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+			//If a key was pressed
+			if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
+			{
+				switch (e.key.keysym.sym)
+				{
+				case SDLK_UP: cmd = 1; break;
+				case SDLK_DOWN: cmd = 2; break;
+				case SDLK_LEFT: cmd = 3; break;
+				case SDLK_RIGHT: cmd = 4; break;
+				default: continue;
+				}
+			}
+			//If a key was released
+			else if (e.type == SDL_KEYUP && e.key.repeat == 0)
+			{
+				switch (e.key.keysym.sym)
+				{
+				case SDLK_UP: cmd = -1; break;
+				case SDLK_DOWN: cmd = -2; break;
+				case SDLK_LEFT: cmd = -3; break;
+				case SDLK_RIGHT: cmd = -4; break;
+				default: continue;
+				}
+			}
+		}
+	}
+}
+
+void draw(bool &quit)
 {
 	Timer timer;
 	Timer fps;
@@ -64,6 +106,13 @@ void draw(const bool &quit)
 		surface.drawSurface(tanks);
 		++frame;
 
+		if (timer.getTicks() * SCREEN_FPS < 1000)
+			SDL_Delay(1000 / SCREEN_FPS - timer.getTicks());
+		if (fps.getTicks() >= 1000)
+		{
+			frame = 0;
+			fps.start();
+		}
 	}
 }
 
@@ -78,36 +127,8 @@ int main(int argc, char* args[])
 
 		while (!quit)
 		{
-			while (SDL_PollEvent(&e) != 0)
-			{
-				if (e.type == SDL_QUIT)
-				{
-					quit = true;
-				}
-				else if (e.type == SDL_KEYDOWN)
-				{
-					switch (e.key.keysym.sym)
-					{
-					case SDLK_UP:
-						break;
-
-					case SDLK_DOWN:
-						break;
-
-					case SDLK_LEFT:
-						break;
-
-					case SDLK_RIGHT:
-						break;
-
-					case SDLK_SPACE:
-						break;
-
-					default:
-						continue;
-					}
-				}
-			}
+			handleEvent(quit);
+			draw(quit);
 		}
 	}
 

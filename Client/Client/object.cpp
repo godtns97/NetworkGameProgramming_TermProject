@@ -1,10 +1,5 @@
 #include "object.h"
 
-void Object::move()
-{
-	posX += 10;
-	posY += 10;
-}
 int Object::getImg() const
 {
 	return img;

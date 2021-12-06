@@ -21,6 +21,7 @@ SDL_Window* gWindow = NULL;						//The window we'll be rendering to
 SDL_Surface* gScreenSurface = NULL;				//The surface contained by the window
 
 const int TANK_SIZE = 40;
+const int TANK_VEL = 10;
 
 const int BULLET_SIZE = 4;
 
