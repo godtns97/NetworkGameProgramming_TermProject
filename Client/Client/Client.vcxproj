@@ -145,12 +145,14 @@
     <ClCompile Include="object.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="tank.cpp" />
+    <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="tank.h" />
+    <ClInclude Include="timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

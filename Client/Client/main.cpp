@@ -1,10 +1,11 @@
 #include "global.h"
 #include "surface.h"
 #include "tank.h"
+#include "timer.h"
 
 list<Tank> tanks;
 
-Surface* surface;
+Surface& surface = Surface::getInstance();
 
 //Starts up SDL and creates window
 bool init()
@@ -32,6 +33,8 @@ bool init()
 			//Get window surface
 			gScreenSurface = SDL_GetWindowSurface(gWindow);
 		}
+
+		surface.loadImage();
 	}
 
 	return success;
@@ -40,10 +43,28 @@ bool init()
 //Frees media and shuts down SDL
 void close()
 {
+	surface.closeSurface();
+
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
 
 	SDL_Quit();
+}
+
+void draw(const bool &quit)
+{
+	Timer timer;
+	Timer fps;
+	unsigned frame = 0;
+
+	fps.start();
+	while (!quit)
+	{
+		timer.start();
+		surface.drawSurface(tanks);
+		++frame;
+
+	}
 }
 
 int main(int argc, char* args[])

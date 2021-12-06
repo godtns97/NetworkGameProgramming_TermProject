@@ -15,6 +15,7 @@ private:
 	SDL_Surface* bulletSurface[1];
 
 public:
+	Surface(Surface&) = delete;
 	static Surface& getInstance()
 	{
 		static Surface instance;
