@@ -28,12 +28,4 @@ const int TANK_VEL = 10;
 
 const int BULLET_SIZE = 4;
 
-// protocol
-struct PACKET
-{
-	unsigned char size;
-	int		_id;
-	int		_cmd;
-};
-
 #endif

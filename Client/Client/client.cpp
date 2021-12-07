@@ -42,28 +42,30 @@ void Client::clientConnect()
 }
 void Client::clientSend(int id, int cmd)
 {
-	PACKET packet;
-	packet.size = sizeof(packet);
-	packet._id = id;
-	packet._cmd = cmd;
+	buf[0] = id;
+	buf[1] = cmd;
 
-	retval = send(sock, packet, sizeof(packet), 0);
+	retval = send(sock, (char*)&buf, sizeof(buf), 0);
 }
-int Client::recvn(SOCKET s, char* buf, int len, int flags)
+void Client::clientReceive(PACKET packet)
 {
-	int received;
-	char* ptr = buf;
-	int left = len;
 
-	while (left > 0)
-	{
-		received = recv(s, ptr, left, flags);
-		if (received == SOCKET_ERROR) return SOCKET_ERROR;
-		else if (received == 0) break;
-
-		left -= received;
-		ptr += received;
-	}
-
-	return (len - left);
 }
+//int Client::recvn(SOCKET s, char* buf, int len, int flags)
+//{
+//	int received;
+//	char* ptr = buf;
+//	int left = len;
+//	
+//	while (left > 0)
+//	{
+//		received = recv(s, ptr, left, flags);
+//		if (received == SOCKET_ERROR) return SOCKET_ERROR;
+//		else if (received == 0) break;
+//
+//		left -= received;
+//		ptr += received;
+//	}
+//
+//	return (len - left);
+//}

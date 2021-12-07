@@ -3,13 +3,14 @@
 #include "tank.h"
 #include "timer.h"
 #include "client.h"
+#include "..\..\Server\Server\protocol.h"
 
 list<Tank> tanks;
 Client* client;
 
 Surface& surface = Surface::getInstance();
 
-int myID, cmd;
+int myID, cmd, clientNum;
 
 //Starts up SDL and creates window
 bool init()
@@ -119,14 +120,25 @@ void draw(bool &quit)
 
 int main(int argc, char* argv[])
 {
+	if (argc != 2)
+	{
+		puts("usage: tank server ip");
+		return -1;
+	}
+
+	puts("Connecting to server...");
 	client = new Client(argv[1]);
 	client->clientConnect();
+	puts("Server Connected!");
+	cout << "myID: " << myID << ", clientNum: " << clientNum << endl;
 
 	if (!init()) cout << "Failed to initalize!\n";
+	
 	else
 	{
+		for (int i = 1; i <= clientNum; ++i) tanks.push_back(Tank(i, i - 1, i * 4, 24));
+
 		bool quit = false;
-		SDL_Event e;
 
 		while (!quit)
 		{
